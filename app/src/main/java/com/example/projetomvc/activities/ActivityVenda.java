@@ -12,11 +12,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.projetomvc.R;
+import com.example.projetomvc.adapters.AdapterItensDoCarrinho;
 import com.example.projetomvc.controller.ProdutoController;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.ItemDoCarrinho;
 import com.example.projetomvc.model.Produto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityVenda extends AppCompatActivity {
@@ -28,6 +30,11 @@ public class ActivityVenda extends AppCompatActivity {
     private Button btnFinalizarVenda;
     private EditText quantidadeItem; // pra pegar quantos itens for adicionados ao carrinho
 
+
+    // carrinho de compras
+    private ListView lsvCarrinhoCompras;
+    private List<ItemDoCarrinho> listaItensDoCarrinho;
+    private AdapterItensDoCarrinho adpItemDoCarrinho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,12 @@ public class ActivityVenda extends AppCompatActivity {
         this.btnAddProduto = (Button) findViewById(R.id.btnAddProduto);
         this.btnFinalizarVenda = (Button) findViewById(R.id.btnFinalizarVenda);
         this.quantidadeItem = (EditText) findViewById(R.id.edtQuantidadeProduto);
+
+        // variaveis e objetos do carrinho de compras
+        this.lsvCarrinhoCompras = (ListView) findViewById(R.id.lsvProdutos);
+        this.listaItensDoCarrinho = new ArrayList<>();
+        this.adpItemDoCarrinho = new AdapterItensDoCarrinho(ActivityVenda.this, this.listaItensDoCarrinho);
+        this.lsvCarrinhoCompras.setAdapter(this.adpItemDoCarrinho);
     }
 
     // ao clicar no botão, pega os dados do produto e coloca no item de venda do carrinho
@@ -66,9 +79,9 @@ public class ActivityVenda extends AppCompatActivity {
         // pra conseguir pegar a quantidade de cada item:
         int quantidadeProduto = 0;
         // senão for digitado nada no formulário:
-        if(this.quantidadeItem.getText().toString().equals("")) {
+        if (this.quantidadeItem.getText().toString().equals("")) {
             quantidadeProduto = 1;
-        } else{
+        } else {
             quantidadeProduto = Integer.parseInt(this.quantidadeItem.getText().toString());
         }
 
@@ -76,7 +89,9 @@ public class ActivityVenda extends AppCompatActivity {
         itemDoCarrinho.setQuantidadeSelecionada(quantidadeProduto);
         itemDoCarrinho.setPrecoProduto(produtoSelecionado.getPreco());
         itemDoCarrinho.setprecoDoItemDaVenda(itemDoCarrinho.getPrecoProduto() * itemDoCarrinho.getQuantidadeSelecionada());
-       
+
+        // para adicionar o produto no clique do botão...
+        this.adpItemDoCarrinho.addItemDoCarrinho(itemDoCarrinho);
 
     }
 }

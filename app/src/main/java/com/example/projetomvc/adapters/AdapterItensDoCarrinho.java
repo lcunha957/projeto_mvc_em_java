@@ -5,6 +5,7 @@ package com.example.projetomvc.adapters;
  Esta classe está ligada com os arquivos: layout_produto.xml
  e ListarProdutosActivity.java */
 
+import android.content.ClipData;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,13 @@ public class AdapterItensDoCarrinho extends BaseAdapter {
         // retorna a view!
         return v;
     }
+
+    // Adicionar um item ao carrinho de compras
+    public void addItemDoCarrinho(ItemDoCarrinho pItemDoCarrinho){
+     this.itensDoCarrinhoList.add(pItemDoCarrinho);
+     this.notifyDataSetChanged();
+    }
+
     // pega a lista do listView de listar_produtos e atualiza os produtos do adapter
     public void atualizar(List<ItemDoCarrinho> pItensDoCarrinho){
         this.itensDoCarrinhoList.clear();
