@@ -1,10 +1,14 @@
 package com.example.projetomvc.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.projetomvc.R;
 import com.example.projetomvc.adapters.AdapterListaProdutos;
@@ -15,6 +19,7 @@ import com.example.projetomvc.model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("Convert2Lambda")
 public class ListarProdutosActivity extends AppCompatActivity {
 
     // criando o listView pra listar nas telas
@@ -54,7 +59,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
         // Processo automatizado para buscar os produtos do banco de dados;
 
         // Cria a instância de controller:
-        ProdutoController produtoController =new ProdutoController(ConexaoSQLite.getInstancia(ListarProdutosActivity.this));
+        ProdutoController produtoController = new ProdutoController(ConexaoSQLite.getInstancia(ListarProdutosActivity.this));
         // retorna a lista de produtos na view.
         produtoList = produtoController.getListaProdutosController();
 
@@ -68,6 +73,17 @@ public class ListarProdutosActivity extends AppCompatActivity {
         this.adapterListaProdutos = new AdapterListaProdutos(ListarProdutosActivity.this, produtoList);
 
         this.lsvProdutos.setAdapter(this.adapterListaProdutos);
+
+
+        // Recuperar o produto que o usuário selecionou:
+       this.lsvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+           @Override
+           public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+
+              Produto produtoSelecionado = (Produto) adapterListaProdutos.getItem(posicao);
+               Toast.makeText(ListarProdutosActivity.this, "Produto:" + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
+           }
+       });
 
 
     }
