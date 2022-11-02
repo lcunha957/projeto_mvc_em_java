@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -124,7 +125,22 @@ public class ListarProdutosActivity extends AppCompatActivity {
                 janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        dialogInterface.cancel();
+
+                        // enviar dados entre activities, o bundle é um pacote que contém os dados.
+                        // O bundle vai dentro da intent, o bundle funciona como chave-valor pra ser recuperado na interface seguinte.
+                        Bundle bundleDadosProduto = new Bundle();
+                        bundleDadosProduto.putLong("idProduto", produtoSelecionado.getId());
+                        bundleDadosProduto.putString("nome_produto", produtoSelecionado.getNome());
+                        bundleDadosProduto.putDouble("preco_produto", produtoSelecionado.getPreco());
+                        bundleDadosProduto.putInt("estoque_produto", produtoSelecionado.getQuantidadeEmEstoque());
+
+                        // cria a intent pra carregar o bundle
+                        Intent intentEditarProdutos = new Intent(ListarProdutosActivity.this, EditarProdutosActivity.class);
+                        // setar os parâmetros pro bundle
+                        intentEditarProdutos.putExtras(bundleDadosProduto);
+                        // vamos começar a intent pra ir pra tela de editar produtos:
+                        startActivity(intentEditarProdutos);
+
                     }
                 });
                 // chama a janela e vai entrar uma janela vazia
