@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".activities.Activity_Produto">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+    
     <EditText
         android:id="@+id/edtNomeProduto"
         android:layout_width="match_parent"
