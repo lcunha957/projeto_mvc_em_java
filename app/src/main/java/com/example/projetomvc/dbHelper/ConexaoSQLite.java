@@ -62,7 +62,7 @@ public class ConexaoSQLite extends SQLiteOpenHelper {
 
         db.execSQL(sqlTabelaItemDaVenda);
     }
-    //desinstale o aplicativo pro banco atualizar as tabelas.s
+    //desinstale o aplicativo pro banco atualizar as tabelas
 
     // ao atualizar a versão do banco de dados
     @Override

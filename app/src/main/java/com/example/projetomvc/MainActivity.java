@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projetomvc.activities.ActivityVenda;
 import com.example.projetomvc.activities.Activity_Produto;
 import com.example.projetomvc.activities.ListarProdutosActivity;
 import com.example.projetomvc.controller.ProdutoController;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnCadastroProdutos;
     private Button btnListarProdutos;
+    private Button btnVender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 // intent tem como parâmetros na instanciação: atividade atual.this(famoso contexto), atividade para onde quero ir.class
                 Intent intentLista = new Intent(MainActivity.this, ListarProdutosActivity.class);
                 startActivity(intentLista);
+            }
+        });
+
+        this.btnVender = (Button) findViewById(R.id.btnVender);
+
+        this.btnVender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentVendas = new Intent(MainActivity.this, ActivityVenda.class);
+                startActivity(intentVendas);
             }
         });
     }

@@ -7,4 +7,47 @@
     android:orientation="vertical"
     tools:context=".activities.ActivityVenda">
 
+    <Spinner
+        android:id="@+id/spnProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <EditText
+        android:id="@+id/edtQuantidadeProduto"
+        android:layout_width="match_parent"
+        android:inputType="numberSigned"
+        android:hint="Informe a quantidade do produto"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Adicionar  produto"/>
+
+
+
+        <Button
+            android:id="@+id/btnFinalizarVenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Finalizar venda"/>
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id ="@+id/lsvProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
 </LinearLayout>

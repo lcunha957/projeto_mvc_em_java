@@ -29,4 +29,15 @@
         android:layout_height="wrap_content"
         android:text=" Listagem de Produtos"/>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
+    <Button
+        android:id="@+id/btnVender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vender"/>
+
 </LinearLayout>
