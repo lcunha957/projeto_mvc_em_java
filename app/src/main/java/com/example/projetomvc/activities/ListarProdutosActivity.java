@@ -48,7 +48,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
         this.produtoList.add(p);
         this.produtoList.add(p);
         this.produtoList.add(p);
-        
+
         // o lsvProdutos que veio junto com o id, é da activity_listar_produtos.xml
         // o lsvProdutos está dentro da ListView, e a ListView está dentro do activity_listar_produtos.xml
         this.lsvProdutos = (ListView) findViewById(R.id.lsvProdutos);

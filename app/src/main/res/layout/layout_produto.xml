@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/tvNomeProduto"
         android:textColor="@color/blue_dark"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -18,17 +19,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$: " />
+            android:layout_marginLeft="10dp"
+            android:text=" R$: " />
 
         <TextView
             android:id="@+id/tvPrecoProduto"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estoque: " />
+            android:text=" Estoque: " />
 
         <TextView
             android:id="@+id/tvEstoqueProduto"
