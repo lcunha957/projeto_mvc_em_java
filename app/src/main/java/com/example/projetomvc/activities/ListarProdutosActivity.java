@@ -8,6 +8,8 @@ import android.widget.ListView;
 
 import com.example.projetomvc.R;
 import com.example.projetomvc.adapters.AdapterListaProdutos;
+import com.example.projetomvc.controller.ProdutoController;
+import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.Produto;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
 
 
         // TODO: buscar os produtos do banco!
-
+          /*
         // Criando produtos na unha .....
         Produto p = new Produto();
         p.setId(654654);
@@ -47,8 +49,16 @@ public class ListarProdutosActivity extends AppCompatActivity {
         this.produtoList.add(p);
         this.produtoList.add(p);
         this.produtoList.add(p);
-        this.produtoList.add(p);
+        this.produtoList.add(p); */
 
+        // Processo automatizado para buscar os produtos do banco de dados;
+
+        // Cria a instância de controller:
+        ProdutoController produtoController =new ProdutoController(ConexaoSQLite.getInstancia(ListarProdutosActivity.this));
+        // retorna a lista de produtos na view.
+        produtoList = produtoController.getListaProdutosController();
+
+        // Como é observado adiante: O produtoList passa os dados ao adapter, e o adapter chama o listView
         // o lsvProdutos que veio junto com o id, é da activity_listar_produtos.xml
         // o lsvProdutos está dentro da ListView, e a ListView está dentro do activity_listar_produtos.xml
         this.lsvProdutos = (ListView) findViewById(R.id.lsvProdutos);
