@@ -9,6 +9,18 @@
 
     <Space
         android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <EditText
+        android:id="@+id/edtIdProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código de barras:"
+        android:inputType="numberSigned" />
+
+
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="10dp"/>
 
     <EditText

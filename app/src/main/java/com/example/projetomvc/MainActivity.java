@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // chama o getInstancia pra verificar se o banco de dados foi ligado, precisa do contexto this;
         ConexaoSQLite conexaoSQLite = ConexaoSQLite.getInstancia(this);
 
+        /* TESTE MANUAL
         //produto na mão aqui e mando pras camadas debaixo, seriam os produtos que viriam do formulário:
         Produto produto1 = new Produto();
         produto1.setId(123455); // como se fosse um código de barras
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
       long resultado = produtoController.salvarProdutoController(produto1);
 
       // dando o print vai ver que está tudo certo, retorna o id do resultado inserido.
-      System.out.println("resultado = " + resultado);
+      System.out.println("resultado = " + resultado); */
+
+
          this.btnCadastroProdutos = (Button) findViewById(R.id.btnCadastroProdutos);
 
         this.btnCadastroProdutos.setOnClickListener(new View.OnClickListener() {

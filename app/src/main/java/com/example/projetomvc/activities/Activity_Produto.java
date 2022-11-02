@@ -11,6 +11,7 @@ import com.example.projetomvc.model.Produto;
 
 public class Activity_Produto extends AppCompatActivity {
 
+     private EditText edtIdProduto;
      private EditText edtNomeProduto;
      private EditText edtQuantidadeProduto;
      private EditText edtPrecoProduto;
@@ -24,6 +25,7 @@ public class Activity_Produto extends AppCompatActivity {
         setContentView(R.layout.activity_produto);
 
        // ligando a activity com o xml....
+        edtIdProduto = (EditText) findViewById(R.id.edtIdProduto); // código de barras
         edtNomeProduto = (EditText) findViewById(R.id.edtNomeProduto);
         edtQuantidadeProduto = (EditText) findViewById(R.id.edtQuantidadeProduto);
         edtPrecoProduto = (EditText) findViewById(R.id.edtPrecoProduto);
@@ -33,6 +35,14 @@ public class Activity_Produto extends AppCompatActivity {
 
     private Produto getDadosProdutoDoFormulario() {
      this.produto = new Produto();
+
+     // se o código de barras for preenchido, vai pra coluna id da tabela produto
+       if(this.edtIdProduto.getText().toString().isEmpty() == false){
+         long idproduto = Long.parseLong(this.edtIdProduto.getText().toString());
+         this.produto.setId(idproduto);
+       }else{
+           return null;
+       }
 
        // se tiver algo no campo nome do formulário, esse algo vai pra coluna Nome da tabela Produto
         if (this.edtNomeProduto.getText().toString().isEmpty() == false){
