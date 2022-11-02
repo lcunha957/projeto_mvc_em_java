@@ -9,7 +9,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
         />
 
     <Button
@@ -17,5 +17,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=" Cadastro de Produtos"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
+    <Button
+        android:id="@+id/btnListarProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Listagem de Produtos"/>
 
 </LinearLayout>

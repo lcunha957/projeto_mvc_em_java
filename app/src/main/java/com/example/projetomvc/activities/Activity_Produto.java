@@ -15,7 +15,7 @@ import com.example.projetomvc.model.Produto;
 
 public class Activity_Produto extends AppCompatActivity {
 
-    private EditText edtIdProduto;
+    private EditText edtIdProduto; // código de barras do produto
     private EditText edtNomeProduto;
     private EditText edtQuantidadeProduto;
     private EditText edtPrecoProduto;

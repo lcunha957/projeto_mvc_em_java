@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.projetomvc.activities.Activity_Produto;
+import com.example.projetomvc.activities.ListarProdutosActivity;
 import com.example.projetomvc.controller.ProdutoController;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.Produto;
@@ -15,6 +16,7 @@ import com.example.projetomvc.model.Produto;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnCadastroProdutos;
+    private Button btnListarProdutos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +45,25 @@ public class MainActivity extends AppCompatActivity {
       System.out.println("resultado = " + resultado); */
 
 
-         this.btnCadastroProdutos = (Button) findViewById(R.id.btnCadastroProdutos);
+        this.btnCadastroProdutos = (Button) findViewById(R.id.btnCadastroProdutos);
 
         this.btnCadastroProdutos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Activity_Produto.class);
+                Intent intent = new Intent(MainActivity.this, Activity_Produto.class);
                 startActivity(intent);
             }
         });
 
+        this.btnListarProdutos = (Button) findViewById(R.id.btnListarProdutos);
+
+        this.btnListarProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // intent tem como parâmetros na instanciação: atividade atual.this(famoso contexto), atividade para onde quero ir.class
+                Intent intentLista = new Intent(MainActivity.this, ListarProdutosActivity.class);
+                startActivity(intentLista);
+            }
+        });
     }
 }
