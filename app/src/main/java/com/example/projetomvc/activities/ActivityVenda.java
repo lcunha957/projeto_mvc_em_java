@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projetomvc.R;
@@ -30,7 +31,7 @@ public class ActivityVenda extends AppCompatActivity {
     private List<Produto> listaProduto;
     private ProdutoController produtoController;
     private EditText quantidadeItem; // pra pegar quantos itens for adicionados ao carrinho
-
+    private TextView tvTotalVenda;
 
     // carrinho de compras
     private ListView lsvCarrinhoCompras;
@@ -62,6 +63,8 @@ public class ActivityVenda extends AppCompatActivity {
 
         this.quantidadeItem = (EditText) this.findViewById(R.id.edtQuantidadeProduto);
 
+        this.tvTotalVenda = (TextView) this.findViewById(R.id.tvTotalVenda);
+
         // variaveis e objetos do carrinho de compras
         this.lsvCarrinhoCompras = (ListView) this.findViewById(R.id.lsvProdutos);
         this.listaItensDoCarrinho = new ArrayList<>();
@@ -84,6 +87,9 @@ public class ActivityVenda extends AppCompatActivity {
                         boolean excluiu = false;
 
                         adpItemDoCarrinho.removerItemDoCarrinho(posicao);
+                       // quando estiver dentro da interface, não pode instanciar com o this!
+                        double totalVenda = calcularTotalVenda(listaItensDoCarrinho);
+                        atualizarValorTotalVenda(totalVenda);
 
                         if (!excluiu) {
                             Toast.makeText(ActivityVenda.this, "Item :  " + itemDoCarrinho.getNome() + "  foi excluido do carrinho com sucesso!", Toast.LENGTH_LONG).show();
@@ -92,6 +98,7 @@ public class ActivityVenda extends AppCompatActivity {
                 });
 
                 janelaDeEscolha.create().show();
+
 
             }
         });
@@ -126,6 +133,26 @@ public class ActivityVenda extends AppCompatActivity {
         // para adicionar o produto no clique do botão...
         this.adpItemDoCarrinho.addItemDoCarrinho(itemDoCarrinho);
 
+        // para atualizar o total da venda:
+        double totalVenda = this.calcularTotalVenda(this.listaItensDoCarrinho);
+         this.atualizarValorTotalVenda(totalVenda);
 
+    }
+
+    // método para calcular o total da venda:
+    private double calcularTotalVenda(List<ItemDoCarrinho> pListaItensDoCarrinho){
+
+        double totalVenda = 0.0d;
+          // tipo do item: lista que vai varrer
+        for (ItemDoCarrinho itemDoCarrinho: pListaItensDoCarrinho) {
+          totalVenda += itemDoCarrinho.getprecoDoItemDaVenda();
+
+        }
+
+        return totalVenda;
+    }
+
+    private void atualizarValorTotalVenda(double pValorTotal){
+        this.tvTotalVenda.setText(String.valueOf(pValorTotal));
     }
 }

@@ -11,49 +11,70 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Selecione um produto: "
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:text="Selecione um produto: " />
 
     <Spinner
         android:id="@+id/spnProduto"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp">
-    </Spinner>
+        android:layout_marginTop="15dp"></Spinner>
 
     <EditText
         android:id="@+id/edtQuantidadeProduto"
         android:layout_width="match_parent"
-        android:inputType="numberSigned"
-        android:hint="Informe a quantidade do produto"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:hint="Informe a quantidade do produto"
+        android:inputType="numberSigned" />
 
 
-        <Button
-            android:id="@+id/btnAddProduto"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:onClick="eventAddProduto"
-            android:text="Adicionar produto"/>
+    <Button
+        android:id="@+id/btnAddProduto"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:onClick="eventAddProduto"
+        android:text="Adicionar produto" />
 
-       <Button
+    <Button
         android:id="@+id/btnFinalizarVenda"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:text="Finalizar compras"/>
+        android:text="Finalizar compras" />
 
-       <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Carrinho de compras:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="20dp"
             android:layout_marginTop="5dp"
-            android:text="Carrinho de compras:" />
+            android:text="Total da Compra R$ :" />
 
-        <ListView
-            android:id="@+id/lsvProdutos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+        <TextView
+            android:id="@+id/tvTotalVenda"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lsvProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="2dp"></ListView>
+
 
 </LinearLayout>
