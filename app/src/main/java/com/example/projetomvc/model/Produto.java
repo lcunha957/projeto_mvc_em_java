@@ -43,12 +43,17 @@ public class Produto {
     }
 
     @Override
-    public String toString() {
+    public String  toString() {
+        /* original
         return "Produto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", quantidadeEmEstoque=" + quantidadeEmEstoque +
                 ", preco=" + preco +
                 '}';
+                */
+
+        // Para retornar o id e o nome e no spinner
+        return this.id  + " - " + this.nome;
     }
 }
