@@ -30,6 +30,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
     private List<Produto> produtoList;
     // o adapter que liga a listView com a lista!
     private AdapterListaProdutos adapterListaProdutos;
+    private  ProdutoController produtoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
         // Processo automatizado para buscar os produtos do banco de dados;
 
         // Cria a instância de controller:
-        ProdutoController produtoController = new ProdutoController(ConexaoSQLite.getInstancia(ListarProdutosActivity.this));
+        this.produtoController = new ProdutoController(ConexaoSQLite.getInstancia(ListarProdutosActivity.this));
         // retorna a lista de produtos na view.
         produtoList = produtoController.getListaProdutosController();
 
@@ -149,5 +150,13 @@ public class ListarProdutosActivity extends AppCompatActivity {
         });
 
 
+
     }
+
+    // executa o evento de clique do botão atualizar
+    public void eventAtualizarProdutos(View view){
+        // chamar update do adapterProdutos
+        this.adapterListaProdutos.atualizar(this.produtoController.getListaProdutosController());
+    }
+
 }

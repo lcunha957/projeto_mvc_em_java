@@ -7,6 +7,16 @@
     android:orientation="vertical"
     tools:context=".activities.ListarProdutosActivity">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Atualizar lista"
+        android:onClick="eventAtualizarProdutos"/>
+
     <ListView
         android:id ="@+id/lsvProdutos"
         android:layout_width="match_parent"

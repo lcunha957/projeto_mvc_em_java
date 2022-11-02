@@ -73,4 +73,12 @@ public class AdapterListaProdutos extends BaseAdapter {
         // retorna a view!
         return v;
     }
+    // pega a lista do listView de listar_produtos e atualiza os produtos do adapter
+    public void atualizar(List<Produto> pProdutos){
+        this.produtoList.clear();
+        // a lista do adapter vai receber uma lista com novos produtos
+        this.produtoList = pProdutos;
+        // notifica o usuário e a interface da mudança
+        this.notifyDataSetChanged();
+    }
 }
