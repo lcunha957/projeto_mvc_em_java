@@ -118,19 +118,19 @@ public class ProdutoDAO {
     public boolean excluirProdutoDAO(long pIdProduto) {
         SQLiteDatabase db = null;
 
-        try{
+        try {
             // pra fazer a escrita do banco de dados
-           db = this.conexaoSQLite.getWritableDatabase();
+            db = this.conexaoSQLite.getWritableDatabase();
 
-           // para deletar, passa a tabela, as cláusulas é o meu filtro e os argumentos para rvitar sql injections
-           db.delete(
-               "produto",
-               "id = ?",
-               new String[]{String.valueOf(pIdProduto)}
-           );
+            // para deletar, passa a tabela, as cláusulas é o meu filtro e os argumentos para rvitar sql injections
+            db.delete(
+                    "produto",
+                    "id = ?",
+                    new String[]{String.valueOf(pIdProduto)}
+            );
         } catch (Exception e) {
-           Log.d("PRODUTODAO DELETE", "não foi possível deletar produto!");
-           return false;
+            Log.d("PRODUTODAO DELETE", "não foi possível deletar produto!");
+            return false;
         } finally {
             if (db != null) {
                 db.close();
@@ -139,5 +139,42 @@ public class ProdutoDAO {
 
         return true;
 
+    }
+
+
+    // Para atualizar o produto no banco de dados:
+    public boolean atualizarProdutoDAO(Produto pProduto) {
+        SQLiteDatabase db = null;
+
+        try {
+            db = this.conexaoSQLite.getWritableDatabase();
+            // Precisa de 4 parâmetros: tabela, chave-valor, condição do where, rede de strings
+            ContentValues produtoAtributos = new ContentValues();
+            //geralmente não se atualiza o id, tem que ser os mesmos nomes da tabela Produto!
+            produtoAtributos.put("nome", pProduto.getNome());
+            produtoAtributos.put("quantidade_em_estoque", pProduto.getQuantidadeEmEstoque());
+            produtoAtributos.put("preco", pProduto.getPreco());
+            int atualizou = db.update(
+                    "produto",
+                    produtoAtributos,
+                    "id = ?",
+                    new String[]{String.valueOf(pProduto.getId())}
+            );
+
+            // é porque realmente atualizou o registro
+            if (atualizou > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            Log.d("PRODUTODAO ATUALIZACAO", "não foi possível atualizar o produto!");
+            return false;
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return false;
     }
 }

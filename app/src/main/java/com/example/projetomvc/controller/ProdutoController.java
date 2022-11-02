@@ -32,7 +32,11 @@ public class ProdutoController {
         // que é ListarProdutosActivity.java
     }
 
-    public boolean excluirProdutoController (long pIdProduto){
+    public boolean excluirProdutoController(long pIdProduto) {
         return this.produtoDAO.excluirProdutoDAO(pIdProduto);
+    }
+
+    public boolean atualizarProdutoController(Produto pProduto) {
+        return this.produtoDAO.atualizarProdutoDAO(pProduto);
     }
 }

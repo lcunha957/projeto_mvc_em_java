@@ -33,7 +33,7 @@ public class EditarProdutosActivity extends AppCompatActivity {
         edtPrecoProduto = (EditText) findViewById(R.id.edtPrecoProduto);
         edtEstoqueProduto = (EditText) findViewById(R.id.edtQuantidadeProduto);
         btnSalvarAlteracoes = (Button) findViewById(R.id.btnEditarProduto);
-        
+
         // recuperar os dados do produto
         Bundle bundleDadosProduto = getIntent().getExtras();
 
@@ -50,7 +50,7 @@ public class EditarProdutosActivity extends AppCompatActivity {
         this.clickNoBotaoSalvarListener();
     }
 
-    private void setDadosProduto(Produto produto){
+    private void setDadosProduto(Produto produto) {
         // passando os dados pro editText para capturar as alterações
         this.edtIdProduto.setText(String.valueOf(produto.getId()));
         this.edtNomeProduto.setText(produto.getNome());
@@ -106,25 +106,23 @@ public class EditarProdutosActivity extends AppCompatActivity {
 
 
                 // pegar os dados digitados no produto
-                Produto produtoAEditar = getDadosProdutoDoFormulario();
+                Produto produtoAAtualizar = getDadosProdutoDoFormulario();
 
-                Log.d("PRODUTO RECUPERADO", produtoAEditar.toString());
-
-                if (produtoAEditar != null) {
+                if (produtoAAtualizar != null) {
                     // preciso chamar a conexão do banco por causa do dao e a controller pra salvar na DAO
                     // produtoController instancia a conexão do banco. A getInstancia pede o contexto que é o uso da classe atual.this
-                   // ProdutoController produtoController = new ProdutoController(ConexaoSQLite.getInstancia(EditarProdutosActivity.this));
-                   // long idProduto = produtoController.salvarProdutoController(produtoAEditar);
+                    ProdutoController produtoController = new ProdutoController(ConexaoSQLite.getInstancia(EditarProdutosActivity.this));
+                    boolean atualizou = produtoController.atualizarProdutoController(produtoAAtualizar);
 
-                   // if (idProduto > 0) {
+                    if (atualizou == true) {
                         // se idProduto for maior do que zero salva na Controller
-                   //     Toast.makeText(EditarProdutosActivity.this, "Produto salvo com sucesso!", Toast.LENGTH_LONG).show();
-                    //} else {
-                   //     Toast.makeText(EditarProdutosActivity.this, "Produto não pode ser salvo!", Toast.LENGTH_LONG).show();
-                  //  }
-                //} else {
-                    // toast como popup de comunicação. Atributos: contexto, texto e tempo
-                    //Toast.makeText(EditarProdutosActivity.this, "Todos os campos são obrigatórios e devem ser preenchidos!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditarProdutosActivity.this, "Produto atualizado com sucesso!", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(EditarProdutosActivity.this, "Produto não pode ser atualizado!", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    //toast como popup de comunicação. Atributos: contexto, texto e tempo
+                    Toast.makeText(EditarProdutosActivity.this, "Todos os campos são obrigatórios e devem ser preenchidos!", Toast.LENGTH_LONG).show();
                 }
 
             }
