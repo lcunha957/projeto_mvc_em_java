@@ -9,10 +9,10 @@
 
     <EditText
         android:id="@+id/edtNomeProduto"
-        android:layout_height="match_parent"
         android:layout_width="wrap_content"
-        android:inputType="text"
-        android:hint="Nome: "/>
+        android:layout_height="match_parent"
+        android:hint="Nome: "
+        android:inputType="text" />
 
     <Space
         android:layout_width="match_parent"
@@ -38,11 +38,13 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="25dp"/>
 
     <Button
+        android:id="@+id/btnSalvarProduto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Salvar Produto"/>
 
 
 </LinearLayout>
