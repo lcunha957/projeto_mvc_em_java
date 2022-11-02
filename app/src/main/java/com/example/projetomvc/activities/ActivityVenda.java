@@ -26,8 +26,6 @@ public class ActivityVenda extends AppCompatActivity {
     private Spinner spnProdutos;
     private List<Produto> listaProduto;
     private ProdutoController produtoController;
-    private Button btnAddProduto;
-    private Button btnFinalizarVenda;
     private EditText quantidadeItem; // pra pegar quantos itens for adicionados ao carrinho
 
 
@@ -35,6 +33,7 @@ public class ActivityVenda extends AppCompatActivity {
     private ListView lsvCarrinhoCompras;
     private List<ItemDoCarrinho> listaItensDoCarrinho;
     private AdapterItensDoCarrinho adpItemDoCarrinho;
+    //private Button btnAddProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,29 +47,30 @@ public class ActivityVenda extends AppCompatActivity {
         this.listaProduto = this.produtoController.getListaProdutosController();
 
         // passando o xml para activity atual
-        this.spnProdutos = (Spinner) findViewById(R.id.spnProduto);
+        this.spnProdutos = (Spinner) this.findViewById(R.id.spnProduto);
 
         // criar um adapter para listaProduto, usaremos o interno do androidStudio. O spinner item é um item embaixo do outro. A lista
         //de itens é a listaProduto
-        ArrayAdapter<Produto> spnProdutoAdapter = new ArrayAdapter<Produto>
+        ArrayAdapter<Produto> spnProdutoAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, this.listaProduto);
         // o spnPorudtos vai usar o adapter spnProdutoAdapter. O adapter é quem vai manusear.s
         this.spnProdutos.setAdapter(spnProdutoAdapter);
         //end spinner
 
-        this.btnAddProduto = (Button) findViewById(R.id.btnAddProduto);
-        this.btnFinalizarVenda = (Button) findViewById(R.id.btnFinalizarVenda);
-        this.quantidadeItem = (EditText) findViewById(R.id.edtQuantidadeProduto);
+        this.quantidadeItem = (EditText) this.findViewById(R.id.edtQuantidadeProduto);
 
         // variaveis e objetos do carrinho de compras
-        this.lsvCarrinhoCompras = (ListView) findViewById(R.id.lsvProdutos);
+        this.lsvCarrinhoCompras = (ListView) this.findViewById(R.id.lsvProdutos);
         this.listaItensDoCarrinho = new ArrayList<>();
         this.adpItemDoCarrinho = new AdapterItensDoCarrinho(ActivityVenda.this, this.listaItensDoCarrinho);
         this.lsvCarrinhoCompras.setAdapter(this.adpItemDoCarrinho);
+
+
     }
 
     // ao clicar no botão, pega os dados do produto e coloca no item de venda do carrinho
     public void eventAddProduto(View view) {
+
         ItemDoCarrinho itemDoCarrinho = new ItemDoCarrinho();
         // pegar o produto selecionado pelo spinner
         Produto produtoSelecionado = (Produto) this.spnProdutos.getSelectedItem();
@@ -81,8 +81,10 @@ public class ActivityVenda extends AppCompatActivity {
         // senão for digitado nada no formulário:
         if (this.quantidadeItem.getText().toString().equals("")) {
             quantidadeProduto = 1;
+
         } else {
             quantidadeProduto = Integer.parseInt(this.quantidadeItem.getText().toString());
+
         }
 
         itemDoCarrinho.setNome(produtoSelecionado.getNome());
@@ -92,6 +94,7 @@ public class ActivityVenda extends AppCompatActivity {
 
         // para adicionar o produto no clique do botão...
         this.adpItemDoCarrinho.addItemDoCarrinho(itemDoCarrinho);
+
 
     }
 }

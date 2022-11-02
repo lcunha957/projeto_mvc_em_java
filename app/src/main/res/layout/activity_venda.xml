@@ -11,54 +11,45 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Selecione um produto: "/>
+        android:text="Selecione um produto: "
+        android:layout_marginTop="10dp"/>
 
     <Spinner
         android:id="@+id/spnProduto"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp">
     </Spinner>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"/>
 
     <EditText
         android:id="@+id/edtQuantidadeProduto"
         android:layout_width="match_parent"
         android:inputType="numberSigned"
         android:hint="Informe a quantidade do produto"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnAddProduto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:onClick="eventAddProduto"
-            android:text="Adicionar  produto"/>
+            android:text="Adicionar produto"/>
 
-        <Button
-            android:id="@+id/btnFinalizarVenda"
+       <Button
+        android:id="@+id/btnFinalizarVenda"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:text="Finalizar compras"/>
+
+       <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-             android:text="Finalizar venda"/>
-
-   </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Carrinho de compras" />
+            android:layout_marginTop="5dp"
+            android:text="Carrinho de compras:" />
 
         <ListView
             android:id="@+id/lsvProdutos"
