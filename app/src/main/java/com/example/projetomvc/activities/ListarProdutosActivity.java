@@ -113,7 +113,7 @@ public class ListarProdutosActivity extends AppCompatActivity {
                    public void onClick(DialogInterface dialogInterface, int id) {
                        dialogInterface.cancel();
                    }
-               })
+               });
                  // chama a janela e vai entrar uma janela vazia
                janelaDeEscolha.create().show();
            }
