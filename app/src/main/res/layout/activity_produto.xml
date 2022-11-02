@@ -9,9 +9,9 @@
 
     <EditText
         android:id="@+id/edtNomeProduto"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:hint="Nome: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome:"
         android:inputType="text" />
 
     <Space
@@ -20,8 +20,8 @@
 
     <EditText
         android:id="@+id/edtQuantidadeProduto"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="numberSigned"
         android:hint="Quantidade desejada: "/>
 
@@ -31,8 +31,8 @@
 
     <EditText
         android:id="@+id/edtPrecoProduto"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:hint="Preço do Produto: "/>
 
@@ -44,7 +44,7 @@
         android:id="@+id/btnSalvarProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Salvar Produto"/>
+        android:text="Salvar"/>
 
 
 </LinearLayout>
