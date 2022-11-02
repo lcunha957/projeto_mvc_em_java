@@ -50,20 +50,16 @@
             android:layout_weight="1"
              android:text="Finalizar venda"/>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"/>
-
     </LinearLayout>
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="10dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" Carrinho de compras: "/>
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="Carrinho de compras: ">
 
     <ListView
         android:id ="@+id/lsvProdutos"
