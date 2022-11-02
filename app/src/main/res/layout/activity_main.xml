@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        />
 
+    <Button
+        android:id="@+id/btnCadastroProdutos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Cadastro de Produtos"/>
 
 </LinearLayout>
