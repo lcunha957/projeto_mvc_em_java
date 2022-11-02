@@ -1,15 +1,17 @@
 package com.example.projetomvc.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Venda {
 
     private long id;
-    private Produto produtoVendido;
     private Date dataDaVenda;
-    private String nomeDoCliente;
+    private String nomeDoCliente; // tarefa pra casa, colocar o nome do cliente e salvar no banco
+    private List<ItemDoCarrinho> itensDaVenda;
 
     public Venda() {
+
     }
 
     public long getId() {
@@ -18,14 +20,6 @@ public class Venda {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Produto getProdutoVendido() {
-        return produtoVendido;
-    }
-
-    public void setProdutoVendido(Produto produtoVendido) {
-        this.produtoVendido = produtoVendido;
     }
 
     public Date getDataDaVenda() {
@@ -44,12 +38,18 @@ public class Venda {
         this.nomeDoCliente = nomeDoCliente;
     }
 
+    public List<ItemDoCarrinho> getItensDaVenda() {
+        return itensDaVenda;
+    }
+
+    public void setItensDaVenda(List<ItemDoCarrinho> itensDaVenda) {
+        this.itensDaVenda = itensDaVenda;
+    }
 
     @Override
     public String toString() {
         return "Venda{" +
                 "id=" + id +
-                ", produtoVendido=" + produtoVendido.toString() +
                 ", dataDaVenda=" + dataDaVenda +
                 ", nomeDoCliente='" + nomeDoCliente + '\'' +
                 '}';

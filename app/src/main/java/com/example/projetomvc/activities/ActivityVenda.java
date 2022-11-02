@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,8 +22,10 @@ import com.example.projetomvc.controller.ProdutoController;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.ItemDoCarrinho;
 import com.example.projetomvc.model.Produto;
+import com.example.projetomvc.model.Venda;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ActivityVenda extends AppCompatActivity {
@@ -106,6 +109,19 @@ public class ActivityVenda extends AppCompatActivity {
 
     }
 
+    // clique no botão finalizarvenda para o evento de fechamento de venda
+    public void eventFecharVenda(View view){
+        Venda vendaFechada = this.criarVenda();
+
+        if(this.salvarVenda(vendaFechada) == true) {
+            Toast.makeText(this, "Venda fechada com sucesso!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Erro no fechamento de venda!", Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
     // ao clicar no botão, pega os dados do produto e coloca no item de venda do carrinho
     public void eventAddProduto(View view) {
 
@@ -139,6 +155,7 @@ public class ActivityVenda extends AppCompatActivity {
 
     }
 
+
     // método para calcular o total da venda:
     private double calcularTotalVenda(List<ItemDoCarrinho> pListaItensDoCarrinho){
 
@@ -152,7 +169,26 @@ public class ActivityVenda extends AppCompatActivity {
         return totalVenda;
     }
 
+    // atualizar o valor da venda
     private void atualizarValorTotalVenda(double pValorTotal){
         this.tvTotalVenda.setText(String.valueOf(pValorTotal));
     }
+
+    // pra criar a venda
+    private Venda criarVenda() {
+        Venda venda = new Venda();
+        venda.setDataDaVenda(new Date());
+        venda.setItensDaVenda(this.listaItensDoCarrinho);
+
+        return venda;
+    }
+
+    // pra salvar a venda
+    private boolean salvarVenda(Venda pVenda){
+        Log.d("VENDA", pVenda.getDataDaVenda().toString());
+
+        return true;
+    }
+
+
 }
