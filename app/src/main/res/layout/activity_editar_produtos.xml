@@ -35,7 +35,7 @@
         android:layout_height="10dp"/>
 
     <EditText
-        android:id="@+id/edtQuantidadeProduto"
+        android:id="@+id/edtEstoqueProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
