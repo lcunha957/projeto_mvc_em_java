@@ -4,14 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context=".activities.ActivityVenda">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione um produto: "/>
 
     <Spinner
         android:id="@+id/spnProduto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp">
     </Spinner>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
 
     <EditText
         android:id="@+id/edtQuantidadeProduto"
@@ -27,22 +37,33 @@
 
         <Button
             android:id="@+id/btnAddProduto"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
             android:text="Adicionar  produto"/>
-
-
 
         <Button
             android:id="@+id/btnFinalizarVenda"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Finalizar venda"/>
+            android:layout_weight="1"
+             android:text="Finalizar venda"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"/>
 
     </LinearLayout>
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Carrinho de compras: "/>
 
     <ListView
         android:id ="@+id/lsvProdutos"
