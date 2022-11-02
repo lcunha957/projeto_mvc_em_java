@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.EditarProdutosActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <EditText
+        android:id="@+id/edtIdProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código de barras:"
+        android:inputType="numberSigned" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <EditText
+        android:id="@+id/edtNomeProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome:"
+        android:inputType="text" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <EditText
+        android:id="@+id/edtQuantidadeProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:hint="Quantidade desejada: "/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <EditText
+        android:id="@+id/edtPrecoProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Preço do Produto: "/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <Button
+        android:id="@+id/btnEditarProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar alterações"/>
+
+
+</LinearLayout>
