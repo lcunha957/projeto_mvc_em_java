@@ -1,9 +1,12 @@
 package com.example.projetomvc.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,7 +36,7 @@ public class ActivityVenda extends AppCompatActivity {
     private ListView lsvCarrinhoCompras;
     private List<ItemDoCarrinho> listaItensDoCarrinho;
     private AdapterItensDoCarrinho adpItemDoCarrinho;
-    //private Button btnAddProduto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,34 @@ public class ActivityVenda extends AppCompatActivity {
         this.listaItensDoCarrinho = new ArrayList<>();
         this.adpItemDoCarrinho = new AdapterItensDoCarrinho(ActivityVenda.this, this.listaItensDoCarrinho);
         this.lsvCarrinhoCompras.setAdapter(this.adpItemDoCarrinho);
+
+        // para remover o item do carrinho:
+        this.lsvCarrinhoCompras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int posicao, long id) {
+                final ItemDoCarrinho itemDoCarrinho = (ItemDoCarrinho) adpItemDoCarrinho.getItem(posicao);
+                AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(ActivityVenda.this);
+                janelaDeEscolha.setTitle("Escolha");
+                janelaDeEscolha.setMessage(" Deseja remover o item " + itemDoCarrinho.getNome() + "?");
+
+                janelaDeEscolha.setNegativeButton("Não", null);
+                janelaDeEscolha.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean excluiu = false;
+
+                        adpItemDoCarrinho.removerItemDoCarrinho(posicao);
+
+                        if (!excluiu) {
+                            Toast.makeText(ActivityVenda.this, "Item :  " + itemDoCarrinho.getNome() + "  foi excluido do carrinho com sucesso!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                janelaDeEscolha.create().show();
+
+            }
+        });
 
 
     }

@@ -49,10 +49,13 @@ public class AdapterItensDoCarrinho extends BaseAdapter {
         return posicao;
     }
 
-    public void removerItemDoCarrinho(int posicao) {
+    public boolean removerItemDoCarrinho(int posicao) {
         this.itensDoCarrinho.remove(posicao);
         // comunica a todos que a lista mudou de tamanho e atualiza na interface;
+        Log.d("ITEM DEL CARRINHO", "item deletado do carrinho com sucesso!");
         notifyDataSetChanged();
+
+        return true;
     }
 
     // retorna os componentes do layout_produto
