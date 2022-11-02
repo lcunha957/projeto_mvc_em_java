@@ -25,7 +25,7 @@ public class AdapterListaProdutos extends BaseAdapter {
 
     public AdapterListaProdutos(Context context, List<Produto> produtoList) {
         this.context = context;
-        this.produtoList = produtoList;
+        this.produtoList = produtoList; // é a responsável por exibir a lista no listView.
     }
 
     // tamanho da lista , temos que ver a quantidade de produtos da lista criada
@@ -67,6 +67,8 @@ public class AdapterListaProdutos extends BaseAdapter {
         tvNomeProduto.setText(this.produtoList.get(posicao).getNome());
         tvPrecoProduto.setText(String.valueOf(this.produtoList.get(posicao).getPreco()));
         tvEstoqueProduto.setText(String.valueOf(this.produtoList.get(posicao).getQuantidadeEmEstoque()));
+
+
 
         // retorna a view!
         return v;

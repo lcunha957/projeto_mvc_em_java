@@ -110,6 +110,9 @@ public class ListarProdutosActivity extends AppCompatActivity {
                         dialogInterface.cancel();
                         // retornos se deu certo ou não a exclusão no banco.
                         if (excluiu == true) {
+                            // atualiza a lista com as remoções
+                            adapterListaProdutos.removerProduto(posicao);
+                            // avisa o usuário que a exclusão deu certo..
                             Toast.makeText(ListarProdutosActivity.this, "Produto excluído com sucesso!", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(ListarProdutosActivity.this, "Erro ao excluir o produto!", Toast.LENGTH_LONG).show();
