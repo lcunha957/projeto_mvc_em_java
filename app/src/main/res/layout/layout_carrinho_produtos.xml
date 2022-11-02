@@ -47,7 +47,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Valor Unitário R$ : "/>
+        android:text=" Valor Item R$ : "/>
 
     <TextView
         android:id="@+id/tvValorTotalItem"

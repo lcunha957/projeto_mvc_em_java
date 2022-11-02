@@ -7,7 +7,7 @@ public class ItemDoCarrinho {
     private String nome;
     private int quantidadeSelecionada;
     private double precoProduto;
-    private double precoUnitario; // precoUnitario = quantidadeSelecionada * precoProduto;
+    private double precoDoItemDaVenda; // precoUnitario = quantidadeSelecionada * precoProduto;
 
 
     public long getId() {
@@ -42,12 +42,12 @@ public class ItemDoCarrinho {
         this.precoProduto = precoProduto;
     }
 
-    public double getPrecoUnitario() {
-        return precoUnitario;
+    public double getprecoDoItemDaVenda() {
+        return precoDoItemDaVenda;
     }
 
-    public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = precoUnitario;
+    public void setprecoDoItemDaVenda(double precoDoItemDaVenda) {
+        this.precoDoItemDaVenda = precoDoItemDaVenda;
     }
 }
 
