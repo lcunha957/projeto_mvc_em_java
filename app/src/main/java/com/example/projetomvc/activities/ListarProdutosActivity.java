@@ -1,8 +1,10 @@
 package com.example.projetomvc.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -81,7 +83,39 @@ public class ListarProdutosActivity extends AppCompatActivity {
            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
 
               Produto produtoSelecionado = (Produto) adapterListaProdutos.getItem(posicao);
-               Toast.makeText(ListarProdutosActivity.this, "Produto:" + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
+               //Toast.makeText(ListarProdutosActivity.this, "Produto:" + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
+
+               // Criando o diálogo pra escolher: excluir, editar ou cancelar o popup, é o JOptionPanel do Java
+               AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(ListarProdutosActivity.this);
+
+               janelaDeEscolha.setTitle("Escolha:");
+               janelaDeEscolha.setMessage("O que deseja fazer com o produto selecionado? ");
+
+               //criação dos botões
+               janelaDeEscolha.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int id) {
+                       // sai do popup e some da tela do usuario
+                  dialogInterface.cancel();
+                   }
+               });
+
+
+               janelaDeEscolha.setNegativeButton("Excluir", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int id) {
+                       dialogInterface.cancel();
+                   }
+               });
+
+               janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialogInterface, int id) {
+                       dialogInterface.cancel();
+                   }
+               })
+                 // chama a janela e vai entrar uma janela vazia
+               janelaDeEscolha.create().show();
            }
        });
 
