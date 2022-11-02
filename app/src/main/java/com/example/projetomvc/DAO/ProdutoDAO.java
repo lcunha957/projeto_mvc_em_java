@@ -72,20 +72,20 @@ public class ProdutoDAO {
         String query = "SELECT * FROM produto;";
 
         // busca no banco de dados...
-        try{
-           // instancia de leitura do banco de dados
+        try {
+            // instancia de leitura do banco de dados
             db = this.conexaoSQLite.getReadableDatabase();
 
             // cria o cursor e manda a query pra dentro dele, passa rawQuery
             cursor = db.rawQuery(query, null);
 
             // cursor recebe o retorno do select, retorna a 1a linha encontrada
-            if(cursor.moveToFirst()){
+            if (cursor.moveToFirst()) {
 
                 // Crio o produto que servirá de mula pra carregar os dados
                 Produto produtoTemporario = null;
 
-                do{
+                do {
                     // retorna os demais registros, a cada laço do do eu crio um novo produto e adiciono na lista
                     produtoTemporario = new Produto();
                     // o getLong é o tipo do atributo, e ele passa a posição: 0 para id, 1 pra nome, 2 para quantidade, 3 para preço
@@ -97,20 +97,47 @@ public class ProdutoDAO {
                     // adiciona na lista de produtos:
                     listaProdutos.add(produtoTemporario);
 
-                } while(cursor.moveToNext()); // while é enquanto tiver registros na linha seguinte; senão ele pára e retorna -1
+                } while (cursor.moveToNext()); // while é enquanto tiver registros na linha seguinte; senão ele pára e retorna -1
             }
 
             // Tudo dando certo, o listaProdutos retorna para a camada de cima: a Controller!
-        }catch(Exception e){
+        } catch (Exception e) {
             // só aparece no console do logcat
-           Log.d("ERRO LISTA PRODUTOS","Erro ao retornar a lista de produtos da base de dados" );
-           return null;
-        }finally {
-            if(db!= null){
+            Log.d("ERRO LISTA PRODUTOS", "Erro ao retornar a lista de produtos da base de dados");
+            return null;
+        } finally {
+            if (db != null) {
                 db.close();
             }
         }
 
         return listaProdutos;
+    }
+
+    // Para saber se o produto existe no banco ou se já foi excluído
+    public boolean excluirProdutoDAO(long pIdProduto) {
+        SQLiteDatabase db = null;
+
+        try{
+            // pra fazer a escrita do banco de dados
+           db = this.conexaoSQLite.getWritableDatabase();
+
+           // para deletar, passa a tabela, as cláusulas é o meu filtro e os argumentos para rvitar sql injections
+           db.delete(
+               "produto",
+               "id = ?",
+               new String[]{String.valueOf(pIdProduto)}
+           );
+        } catch (Exception e) {
+           Log.d("PRODUTODAO DELETE", "não foi possível deletar produto!");
+           return false;
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return true;
+
     }
 }

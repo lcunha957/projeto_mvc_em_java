@@ -78,46 +78,56 @@ public class ListarProdutosActivity extends AppCompatActivity {
 
 
         // Recuperar o produto que o usuário selecionou:
-       this.lsvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-           @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+        this.lsvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
 
-              Produto produtoSelecionado = (Produto) adapterListaProdutos.getItem(posicao);
-               //Toast.makeText(ListarProdutosActivity.this, "Produto:" + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
+                Produto produtoSelecionado = (Produto) adapterListaProdutos.getItem(posicao);
+                //Toast.makeText(ListarProdutosActivity.this, "Produto:" + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
 
-               // Criando o diálogo pra escolher: excluir, editar ou cancelar o popup, é o JOptionPanel do Java
-               AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(ListarProdutosActivity.this);
+                // Criando o diálogo pra escolher: excluir, editar ou cancelar o popup, é o JOptionPanel do Java
+                AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(ListarProdutosActivity.this);
 
-               janelaDeEscolha.setTitle("Escolha:");
-               janelaDeEscolha.setMessage("O que deseja fazer com o produto selecionado? ");
+                janelaDeEscolha.setTitle("Escolha:");
+                janelaDeEscolha.setMessage("O que deseja fazer com o produto selecionado? ");
 
-               //criação dos botões
-               janelaDeEscolha.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int id) {
-                       // sai do popup e some da tela do usuario
-                  dialogInterface.cancel();
-                   }
-               });
+                //criação dos botões
+                janelaDeEscolha.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        // sai do popup e some da tela do usuario
+                        dialogInterface.cancel();
+                    }
+                });
 
 
-               janelaDeEscolha.setNegativeButton("Excluir", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int id) {
-                       dialogInterface.cancel();
-                   }
-               });
+                janelaDeEscolha.setNegativeButton("Excluir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        // faz o método de excluir o produto no banco de dados
+                        boolean excluiu = produtoController.excluirProdutoController(produtoSelecionado.getId());
+                        //fecha o diálogo antes de conferir no banco se realmente excluiu
+                        dialogInterface.cancel();
+                        // retornos se deu certo ou não a exclusão no banco.
+                        if (excluiu == true) {
+                            Toast.makeText(ListarProdutosActivity.this, "Produto excluído com sucesso!", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(ListarProdutosActivity.this, "Erro ao excluir o produto!", Toast.LENGTH_LONG).show();
+                        }
 
-               janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialogInterface, int id) {
-                       dialogInterface.cancel();
-                   }
-               });
-                 // chama a janela e vai entrar uma janela vazia
-               janelaDeEscolha.create().show();
-           }
-       });
+                    }
+                });
+
+                janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        dialogInterface.cancel();
+                    }
+                });
+                // chama a janela e vai entrar uma janela vazia
+                janelaDeEscolha.create().show();
+            }
+        });
 
 
     }
