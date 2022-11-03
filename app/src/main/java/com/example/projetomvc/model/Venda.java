@@ -9,6 +9,8 @@ public class Venda {
     private Date dataDaVenda;
     private String nomeDoCliente; // tarefa pra casa, colocar o nome do cliente e salvar no banco
     private List<ItemDoCarrinho> itensDaVenda;
+    private double totalVenda;
+    private int qtdeItens;
 
     public Venda() {
 
@@ -46,12 +48,31 @@ public class Venda {
         this.itensDaVenda = itensDaVenda;
     }
 
+    public double getTotalVenda() {
+        return totalVenda;
+    }
+
+    public void setTotalVenda(double totalVenda) {
+        this.totalVenda = totalVenda;
+    }
+
+    public int getQtdeItens() {
+        return qtdeItens;
+    }
+
+    public void setQtdeItens(int qtdeItens) {
+        this.qtdeItens = qtdeItens;
+    }
+
     @Override
     public String toString() {
         return "Venda{" +
                 "id=" + id +
                 ", dataDaVenda=" + dataDaVenda +
                 ", nomeDoCliente='" + nomeDoCliente + '\'' +
+                ", itensDaVenda=" + itensDaVenda +
+                ", totalVenda=" + totalVenda +
+                ", qtdeItens=" + qtdeItens +
                 '}';
     }
 }
