@@ -6,6 +6,8 @@ import com.example.projetomvc.DAO.VendaDAO;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.Venda;
 
+import java.util.List;
+
 public class VendaController {
 
       private final VendaDAO vendaDAO;
@@ -21,5 +23,9 @@ public class VendaController {
 
     public boolean salvarItensVendaController( Venda pVenda){
         return vendaDAO.salvarItensDaVenda(pVenda);
+    }
+
+    public List<Venda> listarVendasController(){
+        return vendaDAO.listarVendasDAO();
     }
 }

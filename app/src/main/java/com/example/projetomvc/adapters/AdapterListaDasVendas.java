@@ -12,7 +12,7 @@ import com.example.projetomvc.model.Venda;
 
 import java.util.List;
 
-public class AdapterListaDasVendas {
+public class AdapterListaDasVendas  extends BaseAdapter{
 
     private Context context;
     private List<Venda> vendaList;
@@ -70,7 +70,7 @@ public class AdapterListaDasVendas {
         // a lista do adapter vai receber uma lista com novos produtos
         this.vendaList = pVendas;
         // notifica o usuário e a interface da mudança
-        this.notifyAll(); //this.notifyDataSetChanged(); não funciona
+       this.notifyDataSetChanged(); 
     }
 
 }
