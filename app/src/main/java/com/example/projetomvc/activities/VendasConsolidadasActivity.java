@@ -34,7 +34,7 @@ public class VendasConsolidadasActivity extends AppCompatActivity {
 
         this.adapterListaDasVendas = new AdapterListaDasVendas(VendasConsolidadasActivity.this, listaDeVendasFeitas);
 
-         this.lsvVendas.setAdapter(this.adapterListaDasVendas);
+         this.lsvVendas.setAdapter(adapterListaDasVendas);
 
 
 

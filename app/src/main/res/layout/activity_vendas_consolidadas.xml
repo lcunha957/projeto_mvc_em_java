@@ -6,21 +6,24 @@
     android:layout_height="match_parent"
         tools:context=".activities.VendasConsolidadasActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
             android:text="Relatório de Vendas "/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
         <ListView
             android:id="@+id/lsvMinhasVendas"
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

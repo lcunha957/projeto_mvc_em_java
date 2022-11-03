@@ -10,22 +10,21 @@ import java.util.List;
 
 public class VendaController {
 
-      private final VendaDAO vendaDAO;
-
+    private final VendaDAO vendaDAO;
 
     public VendaController(ConexaoSQLite pConexaoSQLite) {
-        vendaDAO =  new VendaDAO(pConexaoSQLite);
+        vendaDAO = new VendaDAO(pConexaoSQLite);
     }
 
     public long salvarVendaController(Venda pVenda) {
         return vendaDAO.salvarVendaDAO(pVenda);
     }
 
-    public boolean salvarItensVendaController( Venda pVenda){
-        return vendaDAO.salvarItensDaVenda(pVenda);
+    public boolean salvarItensVendaController(Venda pVenda) {
+        return vendaDAO.salvarItensDaVendaDAO(pVenda);
     }
 
-    public List<Venda> listarVendasController(){
+    public List<Venda> listarVendasController() {
         return vendaDAO.listarVendasDAO();
     }
 }

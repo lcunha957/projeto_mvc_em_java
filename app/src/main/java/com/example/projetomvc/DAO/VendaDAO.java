@@ -43,7 +43,7 @@ public class VendaDAO {
         return 0;
     }
 
-    public boolean salvarItensDaVenda(Venda pVenda) {
+    public boolean salvarItensDaVendaDAO(Venda pVenda) {
         SQLiteDatabase db = conexaoSQLite.getWritableDatabase();
 
         try {

@@ -10,18 +10,21 @@ import com.example.projetomvc.R;
 import com.example.projetomvc.model.Produto;
 import com.example.projetomvc.model.Venda;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class AdapterListaDasVendas  extends BaseAdapter{
+public class AdapterListaDasVendas extends BaseAdapter {
 
     private Context context;
     private List<Venda> vendaList;
+    private SimpleDateFormat simpleDateFormat;
 
     // Construtor
 
     public AdapterListaDasVendas(Context context, List<Venda> vendaList) {
         this.context = context;
         this.vendaList = vendaList; // é a responsável por exibir a lista no listView.
+        this.simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     }
 
     // tamanho da lista , temos que ver a quantidade de produtos da lista criada
@@ -50,27 +53,27 @@ public class AdapterListaDasVendas  extends BaseAdapter{
         // inflate é pra carregar o layout
         View v = View.inflate(this.context, R.layout.layout_minhasvendas, null);
 
-        TextView  tvDataVenda = (TextView) v.findViewById(R.id.tvDataVenda);
+        TextView tvDataVenda = (TextView) v.findViewById(R.id.tvDataVenda);
         TextView tvPrecoTotal = (TextView) v.findViewById(R.id.tvTotalVenda);
         TextView tvQtdeItens = (TextView) v.findViewById(R.id.tvQtdeItens);
 
         // alterando os nomes dos campos pro que vier do banco e exige os resultados formatados pela posição na lista!:
-        tvDataVenda.setText(this.vendaList.get(posicao).getDataDaVenda().toString());
+        tvDataVenda.setText(this.simpleDateFormat.format(this.vendaList.get(posicao).getDataDaVenda()));
         tvPrecoTotal.setText(String.valueOf(this.vendaList.get(posicao).getTotalVenda()));
         tvQtdeItens.setText(String.valueOf(this.vendaList.get(posicao).getQtdeItens()));
-
 
 
         // retorna a view!
         return v;
     }
+
     // pega a lista do listView de listar_minhasvendas e atualiza os produtos do adapter
-    public void atualizar(List<Venda> pVendas){
+    public void atualizar(List<Venda> pVendas) {
         this.vendaList.clear();
         // a lista do adapter vai receber uma lista com novos produtos
         this.vendaList = pVendas;
         // notifica o usuário e a interface da mudança
-       this.notifyDataSetChanged(); 
+        this.notifyDataSetChanged();
     }
 
 }
