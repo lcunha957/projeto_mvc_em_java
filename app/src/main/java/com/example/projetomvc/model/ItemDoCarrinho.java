@@ -6,9 +6,17 @@ public class ItemDoCarrinho {
     private long id;
     private String nome;
     private int quantidadeSelecionada;
+    private long idProduto;
     private double precoProduto;
     private double precoDoItemDaVenda; // precoUnitario = quantidadeSelecionada * precoProduto;
 
+    public long getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(long idProduto) {
+        this.idProduto = idProduto;
+    }
 
     public long getId() {
         return id;
@@ -48,6 +56,18 @@ public class ItemDoCarrinho {
 
     public void setprecoDoItemDaVenda(double precoDoItemDaVenda) {
         this.precoDoItemDaVenda = precoDoItemDaVenda;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemDoCarrinho{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", quantidadeSelecionada=" + quantidadeSelecionada +
+                ", idProduto=" + idProduto +
+                ", precoProduto=" + precoProduto +
+                ", precoDoItemDaVenda=" + precoDoItemDaVenda +
+                '}';
     }
 }
 

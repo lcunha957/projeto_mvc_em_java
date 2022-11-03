@@ -150,6 +150,7 @@ public class ActivityVenda extends AppCompatActivity {
         }
 
         itemDoCarrinho.setNome(produtoSelecionado.getNome());
+        itemDoCarrinho.setIdProduto(produtoSelecionado.getId()); // pra identificar o produto que está sendo selecionado
         itemDoCarrinho.setQuantidadeSelecionada(quantidadeProduto);
         itemDoCarrinho.setPrecoProduto(produtoSelecionado.getPreco());
         itemDoCarrinho.setprecoDoItemDaVenda(itemDoCarrinho.getPrecoProduto() * itemDoCarrinho.getQuantidadeSelecionada());
@@ -171,6 +172,7 @@ public class ActivityVenda extends AppCompatActivity {
           // tipo do item: lista que vai varrer
         for (ItemDoCarrinho itemDoCarrinho: pListaItensDoCarrinho) {
           totalVenda += itemDoCarrinho.getprecoDoItemDaVenda();
+          Log.d("PRODUTOS ADICIONADOS:", itemDoCarrinho.toString());
 
         }
 
