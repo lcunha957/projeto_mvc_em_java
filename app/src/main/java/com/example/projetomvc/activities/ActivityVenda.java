@@ -123,6 +123,7 @@ public class ActivityVenda extends AppCompatActivity {
 
         if(this.salvarVenda(vendaFechada) == true) {
             Toast.makeText(this, "Venda fechada com sucesso!", Toast.LENGTH_LONG).show();
+            Log.d("VENDA FECHADA:", vendaFechada.toString());
         } else {
             Toast.makeText(this, "Erro no fechamento de venda!", Toast.LENGTH_LONG).show();
         }
@@ -195,8 +196,16 @@ public class ActivityVenda extends AppCompatActivity {
 
     // pra salvar a venda
     private boolean salvarVenda(Venda pVenda){
-        Log.d("VENDA", pVenda.getDataDaVenda().toString());
-        if(vendaController.salvarVendaController(pVenda) > 0 ){
+        long idVenda = vendaController.salvarVendaController(pVenda);
+
+        if( idVenda > 0 ){
+            pVenda.setId(idVenda);
+            if(vendaController.salvarItensVendaController(pVenda)){
+                Toast.makeText(this, "Venda realizada", Toast.LENGTH_LONG).show();
+            } else{
+                Toast.makeText(this, "Venda não foi realizada, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+
            return true;
         }
         return false;

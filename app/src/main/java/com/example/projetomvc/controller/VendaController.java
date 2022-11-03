@@ -18,4 +18,8 @@ public class VendaController {
     public long salvarVendaController(Venda pVenda) {
         return vendaDAO.salvarVendaDAO(pVenda);
     }
+
+    public boolean salvarItensVendaController( Venda pVenda){
+        return vendaDAO.salvarItensDaVenda(pVenda);
+    }
 }
