@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.projetomvc.activities.ActivityVenda;
 import com.example.projetomvc.activities.Activity_Produto;
 import com.example.projetomvc.activities.ListarProdutosActivity;
+import com.example.projetomvc.activities.VendasConsolidadasActivity;
 import com.example.projetomvc.controller.ProdutoController;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.Produto;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCadastroProdutos;
     private Button btnListarProdutos;
     private Button btnVender;
+    private Button btnMinhasVendas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         this.btnCadastroProdutos = (Button) findViewById(R.id.btnCadastroProdutos);
+        this.btnListarProdutos = (Button) findViewById(R.id.btnListarProdutos);
+        this.btnVender = (Button) findViewById(R.id.btnVender);
+        this.btnMinhasVendas = (Button) findViewById(R.id.btnMinhasVendas);
 
         this.btnCadastroProdutos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.btnListarProdutos = (Button) findViewById(R.id.btnListarProdutos);
+
 
         this.btnListarProdutos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +73,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.btnVender = (Button) findViewById(R.id.btnVender);
 
         this.btnVender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentVendas = new Intent(MainActivity.this, ActivityVenda.class);
                 startActivity(intentVendas);
+            }
+        });
+
+
+        this.btnMinhasVendas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentRelatorioMinhasVendas = new Intent(MainActivity.this, VendasConsolidadasActivity.class);
+                startActivity(intentRelatorioMinhasVendas);
             }
         });
     }
