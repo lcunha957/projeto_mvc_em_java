@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.projetomvc.R;
 import com.example.projetomvc.adapters.AdapterItensDoCarrinho;
 import com.example.projetomvc.controller.ProdutoController;
+import com.example.projetomvc.controller.VendaController;
 import com.example.projetomvc.dbHelper.ConexaoSQLite;
 import com.example.projetomvc.model.ItemDoCarrinho;
 import com.example.projetomvc.model.Produto;
@@ -41,11 +42,18 @@ public class ActivityVenda extends AppCompatActivity {
     private List<ItemDoCarrinho> listaItensDoCarrinho;
     private AdapterItensDoCarrinho adpItemDoCarrinho;
 
+    // controllers
+    private VendaController vendaController;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venda);
+
+        // inicializando a controller da venda:
+        this.vendaController = new VendaController(ConexaoSQLite.getInstancia(this));
 
         // spinner
         this.produtoController = new ProdutoController(ConexaoSQLite.getInstancia(this));
@@ -186,8 +194,10 @@ public class ActivityVenda extends AppCompatActivity {
     // pra salvar a venda
     private boolean salvarVenda(Venda pVenda){
         Log.d("VENDA", pVenda.getDataDaVenda().toString());
-
-        return true;
+        if(vendaController.salvarVendaController(pVenda) > 0 ){
+           return true;
+        }
+        return false;
     }
 
 
