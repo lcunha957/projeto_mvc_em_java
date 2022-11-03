@@ -80,11 +80,11 @@ public class VendaDAO {
                 "SELECT " +
                         "venda.id," +
                         "venda.data," +
-                        "SUM(produto.preco)," +
-                        "COUNT(produto.id)" +
-                        "FROM venda" +
-                        "INNER JOIN item_da_venda ON(venda.id = item_da_venda.id_venda)" +
-                        "INNER JOIN produto ON (item_da_venda.id_produto = produto.id)" +
+                        "SUM(produto.preco * item_da_venda.quantidade_vendida)," +
+                        "SUM(item_da_venda.quantidade_vendida)" +
+                        " FROM venda " +
+                        " INNER JOIN item_da_venda ON(venda.id = item_da_venda.id_venda)" +
+                        " INNER JOIN produto ON (item_da_venda.id_produto = produto.id)" +
                         "GROUP BY venda.id";
 
         try {
